@@ -3,6 +3,9 @@
 
 let notes = ['Einkaufen', 'Geld abheben'];
 
+let trashNotes = [];
+
+
 // -> wann werden sie angezeigt? 
 function renderNotes(){
     let contentRef = document.getElementById('content');
@@ -13,9 +16,29 @@ function renderNotes(){
     }
 }
 
+
+function renderTrashNotes(){
+    let trashContentRef = document.getElementById('trash_content');
+    trashContentRef.innerHTML = "";
+
+    for (let indexTrashNote = 0; indexTrashNote < trashNotes.length; indexTrashNote++) {
+        trashContentRef.innerHTML += getTrashNoteTemplate(indexTrashNote);
+    }
+}
+
+
+
+
 function getNoteTemplate(indexNote){
     return `<p>+ ${notes[indexNote]}<button onclick="deleteNote(${indexNote})">X</button></p>`;
 }
+
+
+function getTrashNoteTemplate(indexTrashNote){
+    return `<p>+ ${notes[indexTrashNote]}<button onclick="deleteNote(${indexTrashNote})">X</button></p>`;
+}
+
+
 
 
 // notizen hinzufügen
@@ -33,8 +56,10 @@ function addNote(){
 
 // notizen löschen
 function deleteNote(indexNote){
-    notes.splice(indexNote, 1);
+    let trashNote = notes.splice(indexNote, 1);
+    trashNotes.push(trashNote);
     renderNotes();
+    renderTrashNotes();
 }
 
 
