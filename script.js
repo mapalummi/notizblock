@@ -9,13 +9,12 @@ function renderNotes(){
     contentRef.innerHTML = "";
 
     for (let indexNote = 0; indexNote < notes.length; indexNote++) {
-        const note = notes[indexNote];
-        contentRef.innerHTML += getNoteTemplate(note);
+        contentRef.innerHTML += getNoteTemplate(indexNote);
     }
 }
 
-function getNoteTemplate(note){
-    return `<p>+ ${note}</p>`
+function getNoteTemplate(indexNote){
+    return `<p>+ ${notes[indexNote]}<button onclick="deleteNote(${indexNote})">X</button></p>`;
 }
 
 
@@ -30,3 +29,15 @@ function addNote(){
 
     noteInputRef.value = "";
 }
+
+
+// notizen löschen
+function deleteNote(indexNote){
+    notes.splice(indexNote, 1);
+    renderNotes();
+}
+
+
+
+
+// notizen archivieren
