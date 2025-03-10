@@ -1,0 +1,33 @@
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    background-color: whitesmoke;
+    border-radius: 100%;
+    border: 3px solid whitesmoke;
+}
+
+.btn:hover{
+    cursor: pointer;
+    border: 3px solid rgb(90, 90, 90, 91);
+}
+
+.btn > img{
+    height: 24px;
+    width: 24px;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.14);
+}
+
+.d_none{
+    display: none;
+}
