@@ -72,4 +72,15 @@ function deleteNote(indexTrashNote){
 }
 
 
+function addOverlay(){
+    document.getElementById('overlay').classList.remove('d_none');
+}
+
+function removeOverlay(){
+    document.getElementById('overlay').classList.add('d_none');
+}
+
+
+
+
 // notizen archivieren
