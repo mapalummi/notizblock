@@ -8,6 +8,7 @@ let allNotes = {
 }
 
 function renderNotes(){
+    noteFromLocalStorage();
     let contentRef = document.getElementById('content');
     contentRef.innerHTML = "";
 
@@ -17,6 +18,7 @@ function renderNotes(){
 }
 
 function renderArchivNotes(){
+    archiveFromlocalStorage();
     let archivContentRef = document.getElementById('archiv_content');
     archivContentRef.innerHTML = "";
 
@@ -26,6 +28,7 @@ function renderArchivNotes(){
 }
 
 function renderTrashNotes(){
+    trashFromLocalStorage();
     let trashContentRef = document.getElementById('trash_content');
     trashContentRef.innerHTML = "";
 
@@ -39,6 +42,7 @@ function addNote(){
     let noteInput = noteInputRef.value;
     allNotes.notes.push(noteInput);
 
+    noteToLocalStorage();
     renderNotes();
 
     noteInputRef.value = "";
@@ -51,8 +55,11 @@ function noteToArchiv(indexNote){
     allNotes.archivNotes.push(archivNote[0]);
     allNotes.archivNotesTitles.push(archivNoteTitle[0]);
 
+    noteToLocalStorage()
     renderNotes();
+    archivToLocalStorage();
     renderArchivNotes();
+    trashToLocalStorage();
     renderTrashNotes();
 }
 
@@ -63,8 +70,11 @@ function noteToTrash(indexNote){
     allNotes.trashNotes.push(trashNote[0]);
     allNotes.trashNotesTitles.push(trashNoteTitle[0]);
 
+    noteToLocalStorage()
     renderNotes();
+    archivToLocalStorage();
     renderArchivNotes();
+    trashToLocalStorage();
     renderTrashNotes();
 }
 
@@ -75,8 +85,11 @@ function archivToTrashNote(i){
     allNotes.trashNotes.push(archivTrashNote[0]);
     allNotes.trashNotesTitles.push(archivTrashNoteTitle[0]);
 
+    noteToLocalStorage()
     renderNotes();
+    archivToLocalStorage();
     renderArchivNotes();
+    trashToLocalStorage();
     renderTrashNotes();
 }
 
@@ -87,16 +100,22 @@ function archivToNote(indexArchivNote){
     allNotes.notes.push(archivedNote[0]);
     allNotes.notesTitles.push(archivedNoteTitle[0]);
 
+    noteToLocalStorage()
     renderNotes();
+    archivToLocalStorage();
     renderArchivNotes();
+    trashToLocalStorage();
     renderTrashNotes();
 }
 
 function deleteNote(indexTrashNote){
     allNotes.trashNotes.splice(indexTrashNote, 1);
 
+    noteToLocalStorage()
     renderNotes();
+    archivToLocalStorage();
     renderArchivNotes();
+    trashToLocalStorage();
     renderTrashNotes();
 }
 
@@ -106,4 +125,55 @@ function addOverlay(){
 
 function removeOverlay(){
     document.getElementById('overlay').classList.add('d_none');
+}
+
+
+
+
+
+
+function noteToLocalStorage(){
+    localStorage.setItem("notesTitles", JSON.stringify(allNotes.notesTitles));
+    localStorage.setItem("notes", JSON.stringify(allNotes.notes));
+}
+
+function archivToLocalStorage(){
+    localStorage.setItem("archivNotesTitles", JSON.stringify(allNotes.archivNotesTitles));
+    localStorage.setItem("archivNotes", JSON.stringify(allNotes.archivNotes));
+}
+
+function trashToLocalStorage(){
+    localStorage.setItem("trashNotesTitles", JSON.stringify(allNotes.trashNotesTitles));
+    localStorage.setItem("trashNotes", JSON.stringify(allNotes.trashNotes));
+}
+
+
+function noteFromLocalStorage(){
+    let newTitles = JSON.parse(localStorage.getItem("notesTitles"));
+    let newNotes = JSON.parse(localStorage.getItem("notes")); 
+
+    if (newTitles != null && newNotes != null) {
+        allNotes.notesTitles = newTitles;
+        allNotes.notes = newNotes;
+      }
+}
+
+function archiveFromlocalStorage(){
+    let newArchivTitles = JSON.parse(localStorage.getItem("archivNotesTitles"));
+    let newArchivNotes = JSON.parse(localStorage.getItem("archivNotes"));
+
+    if (newArchivTitles != null && newArchivNotes != null) {
+        allNotes.archivNotesTitles = newArchivTitles;
+        allNotes.archivNotes = newArchivNotes;
+      }
+}
+
+function trashFromLocalStorage(){
+    let newTrashTitles = JSON.parse(localStorage.getItem("trashNotesTitles"));
+    let newTrashNotes = JSON.parse(localStorage.getItem("trashNotes")); 
+
+    if (newTrashTitles != null && newTrashNotes != null) {
+        allNotes.trashNotesTitles = newTrashTitles;
+        allNotes.trashNotes = newTrashNotes;
+      }
 }
