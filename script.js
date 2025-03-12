@@ -38,6 +38,10 @@ function renderTrashNotes(){
 }
 
 function addNote(){
+    let titleInputRef = document.getElementById('title_input');
+    let titleInput = titleInputRef.value;
+    allNotes.notesTitles.push(titleInput);
+
     let noteInputRef = document.getElementById('note_input');
     let noteInput = noteInputRef.value;
     allNotes.notes.push(noteInput);
@@ -109,6 +113,7 @@ function archivToNote(indexArchivNote){
 }
 
 function deleteNote(indexTrashNote){
+    allNotes.trashNotesTitles.splice(indexTrashNote, 1);
     allNotes.trashNotes.splice(indexTrashNote, 1);
 
     noteToLocalStorage()
