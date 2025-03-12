@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notizblock</title>
 
-    <script src="./scripts/template.js"></script>
     <script src="./script.js"></script>
+    <script src="./scripts/template.js"></script>
 
     <link rel="stylesheet" href="./styles/standard.css" />
     <link rel="stylesheet" href="./styles/assets.css" />
@@ -19,10 +19,16 @@
     <h1>Notizblock</h1>
     <input id="note_input" type="text" />
     <button onclick="addNote()">Notiz speichern</button>
+
     <h2>Notes</h2>
     <div id="content"></div>
+
+    <h2>Archiv</h2>
+    <div id="archiv_content"></div>
+
     <h2>Trash</h2>
     <div id="trash_content"></div>
+
     <button onclick="addOverlay()">Show Deleted Notes</button>
     <div onclick="removeOverlay()" id="overlay" class="overlay d_none"></div>
 </div>
