@@ -40,16 +40,25 @@ function renderTrashNotes(){
 function addNote(){
     let titleInputRef = document.getElementById('title_input');
     let titleInput = titleInputRef.value;
-    allNotes.notesTitles.push(titleInput);
-
+    
     let noteInputRef = document.getElementById('note_input');
     let noteInput = noteInputRef.value;
+    
+    if (titleInput == "") {
+        alert("Titel fehlt");
+      } else if (noteInput == "") {
+        alert("Text fehlt");
+      } else {
+
+    allNotes.notesTitles.push(titleInput);
     allNotes.notes.push(noteInput);
 
     noteToLocalStorage();
     renderNotes();
 
+    titleInputRef.value = "";
     noteInputRef.value = "";
+    }
 }
 
 function noteToArchiv(indexNote){
@@ -124,17 +133,6 @@ function deleteNote(indexTrashNote){
     renderTrashNotes();
 }
 
-function addOverlay(){
-    document.getElementById('overlay').classList.remove('d_none');
-}
-
-function removeOverlay(){
-    document.getElementById('overlay').classList.add('d_none');
-}
-
-
-
-
 
 
 function noteToLocalStorage(){
@@ -181,4 +179,13 @@ function trashFromLocalStorage(){
         allNotes.trashNotesTitles = newTrashTitles;
         allNotes.trashNotes = newTrashNotes;
       }
+}
+
+
+function addOverlay(){
+    document.getElementById('overlay').classList.remove('d_none');
+}
+
+function removeOverlay(){
+    document.getElementById('overlay').classList.add('d_none');
 }

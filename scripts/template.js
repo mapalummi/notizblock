@@ -13,7 +13,10 @@ function getArchivNoteTemplate(indexArchivNote){
 }
 
 function getTrashNoteTemplate(indexTrashNote){
-    return `<p>${allNotes.trashNotesTitles[indexTrashNote]} ->${allNotes.trashNotes[indexTrashNote]}
-                <button onclick="deleteNote(${indexTrashNote})">Delete</button>
-            </p>`;
+    return `<div class="del_note">
+                <p>${allNotes.trashNotesTitles[indexTrashNote]} ->${allNotes.trashNotes[indexTrashNote]}</p>
+                <div>
+                <a onclick="deleteNote(${indexTrashNote})" href="#">delete</a>
+                </div>
+            </div>`;
 }

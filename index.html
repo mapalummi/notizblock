@@ -27,11 +27,13 @@
     <h2>Archiv</h2>
     <div id="archiv_content"></div>
 
-    <h2>Trash</h2>
-    <div id="trash_content"></div>
+    <div onclick="removeOverlay()" id="overlay" class="overlay d_none">
+      <div id="trash_content" class="del_note"></div>
+    </div>
+    
+    <button onclick="addOverlay()">Show Trash Bin</button>
 
-    <button onclick="addOverlay()">Show Deleted Notes</button>
-    <div onclick="removeOverlay()" id="overlay" class="overlay d_none"></div>
+    
 </div>
 
   </body>

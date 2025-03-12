@@ -22,3 +22,26 @@
     justify-content: space-between;
     width: 100%;
 }
+
+.del_note{
+    height: 200px;
+    width: 200px;
+    background-color: #cac9c6;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.del_note p{
+    display: flex;
+    flex-direction: column;
+    text-decoration: line-through;
+}
+
+.del_note a{
+    color: black;
+}

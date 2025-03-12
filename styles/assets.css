@@ -19,9 +19,6 @@
     width: 24px;
 }
 
-
-
-
 .overlay{
     position: absolute;
     top: 0;
@@ -30,6 +27,7 @@
     width: 100%;
     background-color: rgba(0, 0, 0, 0.14);
 }
+
 .d_none{
     display: none;
 }
